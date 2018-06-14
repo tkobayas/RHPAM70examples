@@ -1,4 +1,6 @@
+package com.sample;
 
+import static com.sample.Constants.BASE_URL;
 
 import org.kie.server.api.model.KieServerInfo;
 import org.kie.server.api.model.ServiceResponse;
@@ -11,7 +13,7 @@ public class KieRestClientBasicTest {
 	public static void main(String[] args) {
 		KieServicesConfiguration config = KieServicesFactory
 				.newRestConfiguration(
-						"http://localhost:8080/kie-execution-server/services/rest/server/",
+						BASE_URL,
 						"kieserver", "kieserver1!");
 		KieServicesClient client = KieServicesFactory
 				.newKieServicesClient(config);

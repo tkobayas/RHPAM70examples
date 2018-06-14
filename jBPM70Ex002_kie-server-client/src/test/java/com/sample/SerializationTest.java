@@ -1,24 +1,24 @@
 package com.sample;
 
-import static com.sample.Constants.CONTAINER_ID;
-
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
 import org.kie.server.client.ProcessServicesClient;
 
-public class StartProcessTest extends TestCase {
+public class SerializationTest extends TestCase {
 
     public void testRest() throws Exception {
 
         Map<String, Object> params = new HashMap<String, Object>();
         ProcessServicesClient processClient = KieServerRestUtils.getProcessServicesClient();
-        long processInstanceId = processClient.startProcess(CONTAINER_ID, "project1.helloProcess", params);
-
-        System.out.println("startProcess() : processInstanceId = " + processInstanceId);
-
-
-
+        
+        FileOutputStream fileOut = new FileOutputStream("sample.dat");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(processClient);
+        out.close();
+        fileOut.close();
     }
 }

@@ -95,7 +95,7 @@
       </bpmn2:dataInputAssociation>
       <bpmn2:potentialOwner id="PotentialOwner_1" name="Potential Owner 1">
         <bpmn2:resourceAssignmentExpression id="ResourceAssignmentExpression_1">
-          <bpmn2:formalExpression id="FormalExpression_19">bpmsAdmin</bpmn2:formalExpression>
+          <bpmn2:formalExpression id="FormalExpression_19">rhpamAdmin</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
       </bpmn2:potentialOwner>
     </bpmn2:userTask>

@@ -1,5 +1,7 @@
 package com.sample;
 
+import static com.sample.Constants.BASE_URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,6 @@ import org.kie.server.client.UserTaskServicesClient;
 
 public class KieServerRestUtils {
 
-    private static final String BASE_URL = "http://localhost:8080/kie-execution-server/services/rest/server";
     private static final String DEFAULT_USERNAME = "kieserver";
     private static final String DEFAULT_PASSWORD = "kieserver1!";
 
@@ -40,6 +41,7 @@ public class KieServerRestUtils {
         List<String> capabilities = new ArrayList<String>();
         capabilities.add(KieServerConstants.CAPABILITY_BPM);
         config.setCapabilities(capabilities);
+        config.setTimeout(600000);
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 
         UserTaskServicesClient userTaskServiceClient = client.getServicesClient(UserTaskServicesClient.class);
@@ -56,8 +58,6 @@ public class KieServerRestUtils {
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(BASE_URL, username, password);
         List<String> capabilities = new ArrayList<String>();
         capabilities.add(KieServerConstants.CAPABILITY_BPM);
-        capabilities.add(KieServerConstants.CAPABILITY_BPM_QUERIES);
-
         config.setCapabilities(capabilities);
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 
