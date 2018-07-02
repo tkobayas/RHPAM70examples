@@ -7,29 +7,27 @@
   <groupId>com.sample</groupId>
   <artifactId>jBPM70Ex001_jbpm-mvn-kjar</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <!-- <version>1.0.0</version> -->
 
   <packaging>kjar</packaging>
 
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+  </properties>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-	</properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.bom</groupId>
+        <artifactId>rhpam-platform-bom</artifactId>
+        <type>pom</type>
+        <version>7.0.0.GA-redhat-3</version>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.bom</groupId>
-				<artifactId>rhpam-platform-bom</artifactId>
-				<type>pom</type>
-				<version>7.0.0.GA-redhat-3</version>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
   <dependencies>
   </dependencies>
 
@@ -93,16 +91,6 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.1</version>
-        <configuration>
-          <debug>true</debug>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.kie</groupId>
         <artifactId>kie-maven-plugin</artifactId>
