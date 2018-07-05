@@ -13,7 +13,7 @@
     <mapping-file>META-INF/Servicesorm.xml</mapping-file>
     <mapping-file>META-INF/TaskAuditorm.xml</mapping-file>
     <mapping-file>META-INF/Executor-orm.xml</mapping-file>
-<!--     <mapping-file>META-INF/CaseMgmtorm.xml</mapping-file> -->
+    <mapping-file>META-INF/CaseMgmtorm.xml</mapping-file>
 
     <!-- executor service -->
     <class>org.jbpm.executor.entities.ErrorInfo</class>
