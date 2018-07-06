@@ -60,7 +60,7 @@ public class ProcessJPATest {
         } else {
             configOverrides.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect"); // Change for other DB
         }
-        emf = Persistence.createEntityManagerFactory("org.jbpm.persistence.jpa", configOverrides);
+        emf = Persistence.createEntityManagerFactory("org.jbpm.domain", configOverrides);
     }
 
     @After
