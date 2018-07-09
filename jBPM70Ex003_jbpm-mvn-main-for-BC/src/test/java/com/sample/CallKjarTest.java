@@ -18,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
+import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
 import org.kie.api.runtime.manager.RuntimeEnvironment;
@@ -71,6 +72,8 @@ public class CallKjarTest {
 
         KieServices ks = KieServices.Factory.get();
         ReleaseId releaseId = ks.newReleaseId( groupId, artifactId, version );
+        KieContainer kieContainer = ks.newKieContainer(releaseId);
+
 
         Properties properties = new Properties();
         properties.setProperty( "rhpamAdmin", "" );
@@ -81,6 +84,7 @@ public class CallKjarTest {
                 .persistence( true )
                 .entityManagerFactory( emf )
                 .userGroupCallback( userGroupCallback )
+                .addEnvironmentEntry("KieContainer", kieContainer)
                 .get();
         RuntimeManager runtimeManager = RuntimeManagerFactory.Factory.get().newPerProcessInstanceRuntimeManager( environment, releaseId.toExternalForm() );
         RuntimeEngine runtimeEngine = runtimeManager.getRuntimeEngine( ProcessInstanceIdContext.get() );
