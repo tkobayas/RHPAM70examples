@@ -27,7 +27,7 @@ public class ProcessServlet extends HttpServlet {
         try {
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("recipient", recipient);
-            processInstanceId = ServiceUtils.getProcessService().startProcess(Constants.DEPLOYMENT_ID, "com.sample.rewards-basic", params);
+            processInstanceId = ServiceUtils.getProcessService().startProcess(Constants.CONTAINER_ID, "com.sample.rewards-basic", params);
         } catch (Exception e) {
             throw new ServletException(e);
         }
