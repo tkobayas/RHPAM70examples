@@ -6,6 +6,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 
+import org.jbpm.services.api.ProcessService;
+import org.jbpm.services.api.service.ServiceRegistry;
+
 @ApplicationScoped
 public class EnvironmentProducer {
 
@@ -26,5 +29,10 @@ public class EnvironmentProducer {
         }
         return this.emf;
     }
+    
+//    public ProcessService getProcessService() {
+//        ProcessService service = (ProcessService)ServiceRegistry.get().service(ServiceRegistry.PROCESS_SERVICE);
+//        return service;
+//    }
 
 }
