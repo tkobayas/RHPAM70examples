@@ -196,18 +196,21 @@
       <artifactId>hibernate-commons-annotations</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-    </dependency>
+<!--     <dependency> -->
+<!--       <groupId>org.hibernate</groupId> -->
+<!--       <artifactId>hibernate-validator</artifactId> -->
+<!--     </dependency> -->
+
+<!--     <dependency> -->
+<!--       <groupId>org.antlr</groupId> -->
+<!--       <artifactId>antlr4-runtime</artifactId> -->
+<!--     </dependency> -->
 
     <dependency>
-      <groupId>org.antlr</groupId>
-      <artifactId>antlr4-runtime</artifactId>
-      <!-- <version>${version.org.antlr4}</version> -->
+      <groupId>org.sonatype.sisu.inject</groupId>
+      <artifactId>guice-servlet</artifactId>
     </dependency>
-
-
+    
     <dependency>
       <groupId>dom4j</groupId>
       <artifactId>dom4j</artifactId>

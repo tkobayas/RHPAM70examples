@@ -3,7 +3,6 @@ package org.jbpm.examples.web;
 import java.io.IOException;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jbpm.examples.util.ServiceUtils;
-import org.jbpm.services.api.RuntimeDataService;
-import org.jbpm.services.api.UserTaskService;
 import org.kie.api.task.model.TaskSummary;
 
 public class TaskServlet extends HttpServlet {
