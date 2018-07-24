@@ -10,6 +10,9 @@
   <logger name="org.kie" level="info" />
   <logger name="org.drools" level="info" />
   <logger name="org.jbpm" level="info" />
+  
+    <logger name="org.jbpm.casemgmt.impl.util.TrackingCaseEventListener" level="debug" />
+  
   <logger name="bitronix.tm.twopc.Preparer" level="error" />
   
   <root level="info">
