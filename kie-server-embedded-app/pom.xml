@@ -5,7 +5,7 @@
 
   <groupId>com.example</groupId>
   <artifactId>kie-server-embedded-app</artifactId>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>7.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <properties>
@@ -80,6 +80,16 @@
     <dependency>
       <groupId>org.kie.server</groupId>
       <artifactId>kie-server-rest-drools</artifactId>
+    </dependency>
+
+    <!--  swagger -->
+    <dependency>
+      <groupId>org.kie.server</groupId>
+      <artifactId>kie-server-services-swagger</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.server</groupId>
+      <artifactId>kie-server-rest-swagger</artifactId>
     </dependency>
 
 
