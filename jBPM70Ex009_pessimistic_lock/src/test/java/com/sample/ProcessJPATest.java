@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.drools.core.command.impl.ExecutableCommand;
+import org.drools.core.command.impl.RegistryContext;
 import org.h2.tools.Server;
 import org.jbpm.runtime.manager.impl.RuntimeEnvironmentBuilder;
 import org.jbpm.services.task.identity.JBossUserGroupCallbackImpl;
@@ -20,6 +22,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.Context;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
 import org.kie.api.runtime.manager.RuntimeEnvironment;
@@ -30,6 +33,7 @@ import org.kie.api.task.TaskService;
 import org.kie.api.task.UserGroupCallback;
 import org.kie.api.task.model.TaskSummary;
 import org.kie.internal.io.ResourceFactory;
+import org.kie.internal.runtime.StatefulKnowledgeSession;
 import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,39 +122,58 @@ public class ProcessJPATest {
             executor.execute(new Runnable() {
 
                 public void run() {
-                    logger.info("run");
 
                     RuntimeEngine runtime = manager.getRuntimeEngine(ProcessInstanceIdContext.get(1L));
                     KieSession ksession = runtime.getKieSession();
-                    ProcessInstance processInstance = ksession.getProcessInstance(1L);
-                    logger.info(processInstance.toString());
-                    try {
-                        Thread.sleep(30000);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    logger.info("sleep finished");
+
+                    ksession.execute(new ExecutableCommand<Void>() {
+
+                        public Void execute(Context context) {
+                            logger.info("execute");
+
+                            StatefulKnowledgeSession ksession = (StatefulKnowledgeSession) ((RegistryContext) context).lookup(KieSession.class);
+                            ProcessInstance processInstance =  ksession.getProcessInstance(1L);
+                            logger.info(processInstance.toString());
+                            try {
+                                Thread.sleep(30000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            logger.info("sleep finished");
+                            return null;
+                        }
+                    });
+
                 }
             });
-            
+
             executor.execute(new Runnable() {
 
                 public void run() {
-                    logger.info("run");
 
-                    
                     RuntimeEngine runtime = manager.getRuntimeEngine(ProcessInstanceIdContext.get(1L));
                     KieSession ksession = runtime.getKieSession();
-                    ProcessInstance processInstance = ksession.getProcessInstance(1L);
-                    logger.info(processInstance.toString());
-                    try {
-                        Thread.sleep(30000);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    logger.info("sleep finished");
+
+                    ksession.execute(new ExecutableCommand<Void>() {
+
+                        public Void execute(Context context) {
+                            logger.info("execute");
+
+                            StatefulKnowledgeSession ksession = (StatefulKnowledgeSession) ((RegistryContext) context).lookup(KieSession.class);
+                            ProcessInstance processInstance =  ksession.getProcessInstance(1L);
+                            logger.info(processInstance.toString());
+                            try {
+                                Thread.sleep(30000);
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            logger.info("sleep finished");
+                            return null;
+                        }
+                    });
+
                 }
             });
 
