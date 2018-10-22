@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.kie.server.api.KieServerConstants;
+import org.kie.server.api.marshalling.MarshallingFormat;
 import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
@@ -59,6 +60,9 @@ public class KieServerRestUtils {
         List<String> capabilities = new ArrayList<String>();
         capabilities.add(KieServerConstants.CAPABILITY_BPM);
         config.setCapabilities(capabilities);
+        
+        config.setMarshallingFormat(MarshallingFormat.JSON);
+        
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 
         QueryServicesClient queryServiceClient = client.getServicesClient(QueryServicesClient.class);
