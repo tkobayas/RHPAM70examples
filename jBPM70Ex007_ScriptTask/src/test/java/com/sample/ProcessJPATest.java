@@ -114,10 +114,10 @@ public class ProcessJPATest {
         // Please edit here when you want to use your database
         PoolingDataSource pds = new PoolingDataSource();
         pds.setUniqueName("jdbc/jbpm-ds");
-        pds.setClassName("bitronix.tm.resource.jdbc.lrc.LrcXADataSource");
+        pds.setClassName("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
         pds.getDriverProperties().put("user", "mysql");
         pds.getDriverProperties().put("password", "mysql");
-        pds.getDriverProperties().put("url", "jdbc:mysql://localhost:3306/testrhpam700");
+        pds.getDriverProperties().put("url", "jdbc:mysql://localhost:3306/testrhpam700?pinGlobalTxToPhysicalConnection=true");
         pds.getDriverProperties().put("driverClassName", "com.mysql.jdbc.Driver");
         pds.init();
         return pds;
