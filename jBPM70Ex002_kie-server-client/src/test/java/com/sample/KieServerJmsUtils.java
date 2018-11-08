@@ -30,8 +30,8 @@ public class KieServerJmsUtils {
     private static KieServicesConfiguration getJMSConfiguration(String username, String password) {
         try {
             final Properties env = new Properties();
-            env.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-//            env.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+//            env.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+            env.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
 
 //            env.put(Context.PROVIDER_URL, "remote://localhost:4447");
             env.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:8080");
