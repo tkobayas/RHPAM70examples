@@ -21,17 +21,21 @@ import org.kie.server.client.UserTaskServicesClient;
 
 public class KieServerJmsUtils {
 
-    private static final String DEFAULT_USERNAME = "bpmsAdmin";
+    private static final String DEFAULT_USERNAME = "rhpamAdmin";
     private static final String DEFAULT_PASSWORD = "password1!";
 
-    private static final String JMS_USERNAME = "bpmsAdmin";
+    private static final String JMS_USERNAME = "rhpamAdmin";
     private static final String JMS_PASSWORD = "password1!";
 
     private static KieServicesConfiguration getJMSConfiguration(String username, String password) {
         try {
             final Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
-            env.put(Context.PROVIDER_URL, "remote://localhost:4447");
+//            env.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+
+//            env.put(Context.PROVIDER_URL, "remote://localhost:4447");
+            env.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:8080");
+
             env.put(Context.SECURITY_PRINCIPAL, JMS_USERNAME);
             env.put(Context.SECURITY_CREDENTIALS, JMS_PASSWORD);
             InitialContext context = new InitialContext(env);

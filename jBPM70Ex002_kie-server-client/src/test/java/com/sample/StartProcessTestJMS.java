@@ -20,15 +20,15 @@ public class StartProcessTestJMS extends TestCase {
 
         System.out.println("startProcess() : processInstanceId = " + processInstanceId);
 
-        UserTaskServicesClient taskClient = KieServerJmsUtils.getUserTaskServicesClient("bpmsAdmin", "password1!");
+        UserTaskServicesClient taskClient = KieServerJmsUtils.getUserTaskServicesClient("rhpamAdmin", "password1!");
 
         List<org.kie.server.api.model.instance.TaskSummary> taskList;
-        taskList = taskClient.findTasksAssignedAsPotentialOwner("bpmsAdmin", 0, 100);
+        taskList = taskClient.findTasksAssignedAsPotentialOwner("rhpamAdmin", 0, 100);
         for (org.kie.server.api.model.instance.TaskSummary taskSummary : taskList) {
             System.out.println("taskSummary.getId() = " + taskSummary.getId());
             long taskId = taskSummary.getId();
-            taskClient.startTask(CONTAINER_ID, taskId, "bpmsAdmin");
-            taskClient.completeTask(CONTAINER_ID, taskId, "bpmsAdmin", null);
+            taskClient.startTask(CONTAINER_ID, taskId, "rhpamAdmin");
+            taskClient.completeTask(CONTAINER_ID, taskId, "rhpamAdmin", null);
         }
 
     }
