@@ -56,7 +56,7 @@ public class TestQueryParamBuilder implements QueryParamBuilder<ColumnFilter> {
         Object objMax = parameters.get("max");
         if (objMax instanceof Integer) {
             max = ((Integer)objMax).longValue();
-        } else if (objMin instanceof Long) {
+        } else if (objMax instanceof Long) {
             max = (Long)objMax;
         } else {
             throw new RuntimeException("max = " + objMax + ", type = " + objMax.getClass());
