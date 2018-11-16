@@ -38,7 +38,7 @@ public class TestQueryParamBuilder implements QueryParamBuilder<ColumnFilter> {
             return null;
         }
         
-        ColumnFilter filter1 = FilterFactory.lowerOrEqualsTo("processInstanceId", (Integer)parameters.get("maxProcessInstanceId"));
+        ColumnFilter filter1 = FilterFactory.lowerOrEqualsTo("processInstanceId", ((Number)parameters.get("maxProcessInstanceId")).longValue());
         ColumnFilter filter2 = FilterFactory.equalsTo("status", (Integer)parameters.get("status"));
         ColumnFilter topFilter = FilterFactory.AND(filter1, filter2);
         
