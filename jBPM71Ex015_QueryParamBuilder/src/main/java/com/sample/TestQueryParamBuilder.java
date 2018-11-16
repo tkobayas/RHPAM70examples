@@ -22,56 +22,32 @@ import org.dashbuilder.dataset.filter.ColumnFilter;
 import org.dashbuilder.dataset.filter.FilterFactory;
 import org.jbpm.services.api.query.QueryParamBuilder;
 
-
 public class TestQueryParamBuilder implements QueryParamBuilder<ColumnFilter> {
 
     private Map<String, Object> parameters;
     private boolean built = false;
+
     public TestQueryParamBuilder(Map<String, Object> parameters) {
         this.parameters = parameters;
     }
-    
+
     @Override
     public ColumnFilter build() {
         // return null if it was already invoked
         if (built) {
             return null;
         }
-        
-        String columnName = "processInstanceId";
-        
-        Long min = null;
-        Object objMin = parameters.get("min");
-        if (objMin instanceof Integer) {
-            min = ((Integer)objMin).longValue();
-        } else if (objMin instanceof Long) {
-            min = (Long)objMin;
-        } else {
-            throw new RuntimeException("min = " + objMin + ", type = " + objMin.getClass());
-        }
-        
-        System.out.println("min = " + min);
-        
-        Long max = null;
-        Object objMax = parameters.get("max");
-        if (objMax instanceof Integer) {
-            max = ((Integer)objMax).longValue();
-        } else if (objMax instanceof Long) {
-            max = (Long)objMax;
-        } else {
-            throw new RuntimeException("max = " + objMax + ", type = " + objMax.getClass());
-        }
-        
-        System.out.println("max = " + max);
 
-        
+        String columnName = "processInstanceId";
+
         ColumnFilter filter = FilterFactory.OR(
-                FilterFactory.greaterOrEqualsTo(min),
-                FilterFactory.lowerOrEqualsTo(max));
+                FilterFactory.greaterOrEqualsTo(((Number) parameters.get("min")).longValue()), 
+                FilterFactory.lowerOrEqualsTo(((Number) parameters.get("max")).longValue()));
+
         filter.setColumnId(columnName);
-        
+
         System.out.println("filter = " + filter);
-       
+
         built = true;
         return filter;
     }
