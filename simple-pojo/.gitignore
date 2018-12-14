@@ -1,0 +1,10 @@
+target/
+.settings/
+.classpath
+.project
+build/classes/
+*~
+temp/
+transaction.log
+.tern-project
+
