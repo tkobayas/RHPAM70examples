@@ -110,7 +110,7 @@ public class ProcessJPATest {
                     System.out.println("How many pending subtasks for the ParentTask? = " + ((InternalTaskService)taskService).getPendingSubTasksByParent(taskId));
                     
                     // Not complete yet
-                    //taskService.complete(taskSummary.getId(), "rhpamAdmin", null);
+                    //taskService.complete(taskSummary.getId(), "john", null);
                 }
             }
             
