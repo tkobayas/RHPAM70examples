@@ -10,4 +10,5 @@ tmp.log
 .recommenders/
 bin/
 ObjectStore/
+.docs/
 
