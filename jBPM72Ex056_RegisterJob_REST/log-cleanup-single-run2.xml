@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<job-request-instance>
+  <job-command>org.jbpm.executor.commands.LogCleanupCommand</job-command>
+  <data>
+    <entry>
+      <key>OlderThanPeriod</key>
+      <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1d</value>
+    </entry>
+    <entry>
+      <key>SingleRun</key>
+      <value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">true</value>
+    </entry>
+  </data>
+</job-request-instance>

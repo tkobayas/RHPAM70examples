@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<job-request-instance>
+        <job-command>com.sample.CustomRequeueRunningJobsCommand</job-command>
+        <data>
+            <entry>
+                <key>MaxRunningTime</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">30000</value>
+            </entry>
+            <entry>
+                <key>RunPeriod</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:long">30000</value>
+            </entry>
+        </data>
+</job-request-instance>

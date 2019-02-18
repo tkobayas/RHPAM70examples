@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<job-request-instance>
+        <job-command>org.jbpm.executor.commands.PrintOutCommand</job-command>
+        <scheduled-date>2019-01-10T11:13:30+09:00</scheduled-date>
+        <data />
+</job-request-instance>
