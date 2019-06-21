@@ -1,6 +1,8 @@
 package com.sample;
 
 import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -12,11 +14,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.jbpm.casemgmt.api.model.instance.CaseFileInstance;
 import org.jbpm.casemgmt.api.model.instance.CaseInstance;
+import org.jbpm.casemgmt.impl.model.instance.CaseInstanceImpl;
 import org.jbpm.services.task.impl.model.UserImpl;
 import org.junit.Test;
+import org.kie.api.runtime.process.ProcessInstance;
+import org.kie.api.runtime.process.WorkItem;
 import org.kie.api.runtime.query.QueryContext;
 import org.kie.api.task.model.OrganizationalEntity;
 import org.kie.api.task.model.TaskSummary;
@@ -74,6 +80,17 @@ public class SubCaseTest extends AbstractCaseServicesBaseTest {
             Map<String, CaseInstance> byCaseId = caseInstances.stream().collect(toMap(CaseInstance::getCaseId, c -> c));
             assertTrue(byCaseId.containsKey(SUB_CASE_ID));
             assertTrue(byCaseId.containsKey(HR_CASE_ID));
+            
+//            CaseInstanceImpl parentCaseInstance = (CaseInstanceImpl)caseService.getCaseInstance(SUB_CASE_ID);
+//            CaseFileInstance parentCaseInstanceFile = caseService.getCaseFileInstance(SUB_CASE_ID);
+//            
+//            Long processInstanceId = parentCaseInstance.getProcessInstanceId();
+//            List<WorkItem> workItems = processService.getWorkItemByProcessInstance(processInstanceId);
+//            List<String> childCaseIds = workItems.stream().filter(w -> w.getParameter("CaseId") != null ).map(w -> (String)w.getParameter("CaseId")).collect(toList());
+//            System.out.println("childCaseIds = " + childCaseIds);
+//
+//            CaseInstance childCaseInstance = caseService.getCaseInstance(HR_CASE_ID);
+//            CaseFileInstance childCaseInstanceFile = caseService.getCaseFileInstance(HR_CASE_ID);
             
             List<TaskSummary> tasks = caseRuntimeDataService.getCaseTasksAssignedAsPotentialOwner(HR_CASE_ID, "john", null, new QueryContext());
             assertNotNull(tasks);
