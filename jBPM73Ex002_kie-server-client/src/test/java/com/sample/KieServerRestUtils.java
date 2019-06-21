@@ -61,7 +61,9 @@ public class KieServerRestUtils {
         capabilities.add(KieServerConstants.CAPABILITY_BPM);
         config.setCapabilities(capabilities);
         
-        config.setMarshallingFormat(MarshallingFormat.JSON);
+//        config.setMarshallingFormat(MarshallingFormat.JSON);
+        config.setMarshallingFormat(MarshallingFormat.JAXB);
+
         
         KieServicesClient client = KieServicesFactory.newKieServicesClient(config);
 

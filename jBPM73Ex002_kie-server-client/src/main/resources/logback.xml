@@ -7,6 +7,8 @@
     </encoder>
   </appender>
 
+  <logger name="org.kie.server.api.marshalling.jaxb.JaxbMarshaller" level="info" />
+
   <logger name="org.kie" level="debug" />
   <logger name="org.drools" level="info" />
   <logger name="org.jbpm" level="info" />

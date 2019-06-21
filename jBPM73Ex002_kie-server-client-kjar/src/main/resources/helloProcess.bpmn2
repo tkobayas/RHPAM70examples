@@ -5,6 +5,8 @@
   <bpmn2:itemDefinition id="ItemDefinition_2" isCollection="false" structureRef="Integer"/>
   <bpmn2:itemDefinition id="ItemDefinition_3" isCollection="false" structureRef="Boolean"/>
   <bpmn2:process id="project1.helloProcess" tns:packageName="project1" name="helloProcess" isExecutable="true" processType="Private">
+    <bpmn2:property id="processVar1" itemSubjectRef="ItemDefinition_1" name="processVar1"/>
+    <bpmn2:property id="processVar2" itemSubjectRef="ItemDefinition_1" name="processVar2"/>
     <bpmn2:startEvent id="StartEvent_1" name="StartProcess">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
