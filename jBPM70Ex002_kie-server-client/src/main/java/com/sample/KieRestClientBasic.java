@@ -8,7 +8,7 @@ import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 
-public class KieRestClientBasicTest {
+public class KieRestClientBasic {
 
 	public static void main(String[] args) {
 		KieServicesConfiguration config = KieServicesFactory

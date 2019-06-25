@@ -13,7 +13,7 @@ import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 
-public class DisposeContainerTest {
+public class DisposeContainer {
 
 
     public static void main(String[] args) throws Exception {

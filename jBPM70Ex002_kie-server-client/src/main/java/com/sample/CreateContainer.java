@@ -16,7 +16,7 @@ import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 
-public class CreateContainerTest {
+public class CreateContainer {
 
 	public static void main(String[] args) {
 		KieServicesConfiguration config = KieServicesFactory
