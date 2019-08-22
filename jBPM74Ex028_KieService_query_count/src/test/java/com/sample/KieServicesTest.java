@@ -252,9 +252,8 @@ public class KieServicesTest extends AbstractKieServicesBaseTest {
         QueryParam count = new QueryParam("processInstanceId", "COUNT", Arrays.asList("processInstanceId"));
         
         List<?> results = queryService.query("getAllProcessInstances", RawListQueryMapper.get(), new QueryFilter(0, 100), count);
-        //logger.info("results.size() = " + results.size());
-        for (Object obj : results) {
-            System.out.println("obj = " + obj);
+        for (Object result : results) {
+            System.out.println("count of process instance list = " + result);
         }
         
         SqlQueryDefinition query2 = new SqlQueryDefinition("getTasksAssignedAsPotentialOwner", "jdbc/testDS1");
@@ -264,9 +263,8 @@ public class KieServicesTest extends AbstractKieServicesBaseTest {
         QueryParam count2 = new QueryParam("task_id", "COUNT", Arrays.asList("task_id"));
         
         List<?> results2 = queryService.query("getTasksAssignedAsPotentialOwner", RawListQueryMapper.get(), new QueryFilter(0, 100), count2);
-        //logger.info("results2.size() = " + results2.size());
-        for (Object obj : results2) {
-            System.out.println("obj = " + obj);
+        for (Object result : results2) {
+            System.out.println("count of task list = " + result);
         }
     }
 }
