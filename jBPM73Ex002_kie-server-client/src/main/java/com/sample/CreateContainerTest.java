@@ -23,6 +23,8 @@ public class CreateContainerTest {
 				.newRestConfiguration(
 				        BASE_URL,
 						"kieserver", "kieserver1!");
+		
+		config.setTimeout(60000L);
 		KieServicesClient client = KieServicesFactory
 				.newKieServicesClient(config);
 		

@@ -39,11 +39,9 @@ import org.slf4j.LoggerFactory;
 public class ProcessJPATest {
 
     private static final Logger logger = LoggerFactory.getLogger(ProcessJPATest.class);
-    
-    private static final boolean H2 = true;
 
     private H2Server server = new H2Server();
-    
+
     private static EntityManagerFactory emf;
 
     private static Server h2Server;
@@ -52,22 +50,14 @@ public class ProcessJPATest {
     @Before
     public void setup() {
 
-        if (H2) {
-            // for H2 datasource
-            server.start();
-            ds = setupPoolingDataSource();
-        } else {
-            // for external database datasource
-            ds = setupPoolingDataSource();
-        }
+        // for H2 datasource
+        server.start();
+        ds = setupPoolingDataSource();
 
         Map configOverrides = new HashMap();
         configOverrides.put("hibernate.hbm2ddl.auto", "create"); // comment out if you don't want to clean up tables
-        if (H2) {
-            configOverrides.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        } else {
-            configOverrides.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect"); // Change for other DB
-        }
+        configOverrides.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+
         emf = Persistence.createEntityManagerFactory("org.jbpm.domain", configOverrides);
     }
 
@@ -132,9 +122,7 @@ public class ProcessJPATest {
         properties.setProperty("john", "");
         UserGroupCallback userGroupCallback = new JBossUserGroupCallbackImpl(properties);
 
-        RuntimeEnvironment environment = RuntimeEnvironmentBuilder.getDefault().persistence(true)
-                .entityManagerFactory(emf).userGroupCallback(userGroupCallback)
-                .addAsset(ResourceFactory.newClassPathResource(process), ResourceType.BPMN2).get();
+        RuntimeEnvironment environment = RuntimeEnvironmentBuilder.getDefault().persistence(true).entityManagerFactory(emf).userGroupCallback(userGroupCallback).addAsset(ResourceFactory.newClassPathResource(process), ResourceType.BPMN2).get();
         return RuntimeManagerFactory.Factory.get().newPerProcessInstanceRuntimeManager(environment);
 
     }
@@ -159,7 +147,7 @@ public class ProcessJPATest {
         }
         return pds;
     }
-    
+
     private static class H2Server {
 
         private Server server;
