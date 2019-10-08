@@ -82,6 +82,7 @@ public class ProcessJPATest {
 
             // ------------
             {
+                // john cannot claim Task2 because john is set to "ExcludedOwnerId".
                 List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
                 for (TaskSummary taskSummary : list) {
                     System.out.println("john starts a task : taskId = " + taskSummary.getId());
