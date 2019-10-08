@@ -8,6 +8,7 @@ import org.kie.api.event.process.ProcessStartedEvent;
 import org.kie.api.event.process.ProcessVariableChangedEvent;
 import org.kie.api.event.process.SLAViolatedEvent;
 
+import org.kie.api.runtime.process.WorkflowProcessInstance;
 
 public class MyProcessEventListener implements ProcessEventListener {
 
@@ -53,8 +54,7 @@ public class MyProcessEventListener implements ProcessEventListener {
 
     @Override
     public void beforeNodeLeft(ProcessNodeLeftEvent event) {
-        // TODO Auto-generated method stub
-
+        //((WorkflowProcessInstance)event.getProcessInstance()).setVariable("var1", "123");
     }
 
     @Override
