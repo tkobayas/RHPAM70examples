@@ -25,9 +25,12 @@ import org.kie.api.runtime.manager.RuntimeManagerFactory;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.api.task.TaskService;
 import org.kie.api.task.UserGroupCallback;
+import org.kie.api.task.model.OrganizationalEntity;
+import org.kie.api.task.model.Task;
 import org.kie.api.task.model.TaskSummary;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
+import org.kie.internal.task.api.model.InternalPeopleAssignments;
 import org.kie.test.util.db.DataSourceFactory;
 import org.kie.test.util.db.PoolingDataSourceWrapper;
 import org.slf4j.Logger;
@@ -82,7 +85,6 @@ public class ProcessJPATest {
 
             // ------------
             {
-                // john cannot claim Task2 because john is set to "ExcludedOwnerId".
                 List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
                 for (TaskSummary taskSummary : list) {
                     System.out.println("john starts a task : taskId = " + taskSummary.getId());
@@ -91,9 +93,19 @@ public class ProcessJPATest {
                 }
             }
 
+            //----
+            {
+                Task task = taskService.getTaskById(2);
+                List<OrganizationalEntity> excludedOwners = ((InternalPeopleAssignments)task.getPeopleAssignments()).getExcludedOwners();
+                System.out.println("excludedOwners = " + excludedOwners);
+            }
+            
             // -----------
             {
                 List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
+                if (list.isEmpty()) {
+                    System.out.println("john cannot claim Task2 because john is set to ExcludedOwnerId");
+                }
                 for (TaskSummary taskSummary : list) {
                     System.out.println("john starts a task : taskId = " + taskSummary.getId());
                     taskService.start(taskSummary.getId(), "john");
